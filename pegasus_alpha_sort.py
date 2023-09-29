@@ -7,7 +7,7 @@ metadata_entries = {}
 
 # This is seriously so gross and messy I can't even be bothered commenting it properly XD
 # It works though
-with open(metadata_file, "r") as file:
+with open(metadata_file, "r", encoding='utf-8') as file:
     get_beginning_data = 1
     game_being_parsed = None
     add_game_data_to_dict = 0
@@ -39,11 +39,6 @@ for each_entry in metadata_entries:
 while beginning_data.endswith("\n"):
     beginning_data = beginning_data[:-1]
 
-# Append the console/system metadata and launch parameters
-with open(metadata_file, "w") as f:
-    f.write(beginning_data)
-    f.write("\n\n")
-
 # Sort dict entries alphabetically
 metadata_entries_sorted = sorted(metadata_entries.items())
 
@@ -51,10 +46,15 @@ metadata_entries_sorted = sorted(metadata_entries.items())
 total_num_of_entries = len(metadata_entries_sorted)
 iterate_count = 0
 
+# Append the console/system metadata and launch parameters
+with open(metadata_file, "w", encoding='utf-8') as f:
+    f.write(beginning_data)
+    f.write("\n\n")
+
 # Append the sorted metadata entries back into the file
 for key, value in metadata_entries_sorted:
     iterate_count +=1
-    with open(metadata_file, "a") as f:
+    with open(metadata_file, "a", encoding='utf-8') as f:
         f.write("game: " + key + "\n")
         f.write(value)
         if iterate_count != total_num_of_entries:
