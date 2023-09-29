@@ -50,7 +50,6 @@ metadata_entries_sorted = sorted(metadata_entries.items())
 # Create an iterator counter to avoid appending new-lines at end of the file
 total_num_of_entries = len(metadata_entries_sorted)
 iterate_count = 0
-print(total_num_of_entries)
 
 # Append the sorted metadata entries back into the file
 for key, value in metadata_entries_sorted:
